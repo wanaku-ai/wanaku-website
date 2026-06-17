@@ -147,7 +147,7 @@ The point isn't the query. It's that the AI is no longer guessing — it's check
 
 The `sql-tool` template will ship with Wanaku 0.2.0. To get started once the release is available:
 
-1. [Install Wanaku](/docs/getting-started)
+1. [Install Wanaku](https://wanaku.ai/docs/demos/wanaku-demos-current/)
 2. Follow the steps above to set up PostgreSQL and instantiate the template
 3. Connect your MCP-compatible AI client to the Wanaku router
 
