@@ -1,5 +1,5 @@
 ---
-title: "Querying Live Databases with Wanaku's SQL Tool Template"
+title: "Building an MCP SQL Tool for LLMs with Wanaku and Apache Camel"
 date: 2026-06-17
 author: Wanaku Team
 tags:
@@ -22,13 +22,13 @@ That's exactly what Wanaku's new `sql-tool` service template enables. It connect
 The `sql-tool` template is part of the upcoming Wanaku 0.2.0 release, pending the merge of [PR #1358](https://github.com/wanaku-ai/wanaku/pull/1358). If you want to try it before the release, you can build from the PR branch.
 :::
 
-## The Setup: A Product Catalog
+## Setting Up a PostgreSQL Database for AI Querying
 
 To show this in action, we'll build a minimal helpdesk assistant that can answer product questions by querying a PostgreSQL database. The database has three tables — `categories`, `products`, and `inventory` — with sample data covering laptops, desktops, monitors, and accessories.
 
 ### Step 1: Start PostgreSQL
 
-Spin up a PostgreSQL instance with Podman (Docker works too):
+Here is how to deploy a local PostgreSQL instance using Podman or Docker for our AI database tool:
 
 ```shell
 podman run --rm --name wanaku-postgres \
@@ -68,7 +68,7 @@ You should see results like:
 (4 rows)
 ```
 
-## Connecting Wanaku to the Database
+## Exposing SQL Queries as MCP Tools using Wanaku
 
 Now for the interesting part. Wanaku's `sql-tool` template packages everything needed to expose a SQL query as an MCP tool: the Camel route, the MCP tool definition, and the required dependencies. You just provide your connection details and the query.
 
@@ -115,7 +115,7 @@ The `sql-tool` template uses Apache Camel's SQL component to execute queries. Wh
 
 The template handles all of this wiring automatically — you just provide the query and connection details.
 
-## Passing Dynamic Arguments to SQL Queries
+## Parameterizing AI Prompts into Dynamic SQL Queries
 
 The `${body}` syntax used in the query is a Camel Simple expression. Since the sql-tool template is built on the [Apache Camel SQL component](https://camel.apache.org/components/next/sql-component.html), you can use any expression the component supports.
 
@@ -151,7 +151,7 @@ The `sql-tool` template will ship with Wanaku 0.2.0. To get started once the rel
 2. Follow the steps above to set up PostgreSQL and instantiate the template
 3. Connect your MCP-compatible AI client to the Wanaku router
 
-![Output showing the results from the SQL tool](/blog/sql-tool-result.png)
+![Terminal screenshot of an MCP-compatible AI client successfully displaying real-time data retrieved from a PostgreSQL database via Wanaku](/blog/sql-tool-result.png)
 
 If you find this useful, consider [starring the project on GitHub](https://github.com/wanaku-ai/wanaku) — it helps others discover it.
 
