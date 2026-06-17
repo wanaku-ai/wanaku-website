@@ -45,7 +45,7 @@ In a separate terminal, import the demo schema:
 podman exec -i wanaku-postgres psql -U postgres -d postgres < sql-tool-demo.sql
 ```
 
-You can find the SQL script in the [wanaku-demos](https://github.com/wanaku-ai/wanaku-demos) repository.
+You can download the SQL script here: [sql-tool-demo.sql](/blog/sql-tool-demo.sql).
 
 ### Step 3: Verify the Data
 
