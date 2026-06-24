@@ -11,7 +11,7 @@ export default defineConfig({
     ignoreDeadLinks: true,
     base: '/',
     outDir: 'dist',
-    srcExclude: ['**/node_modules/**', 'camel-integration-capability/main/**'],
+    srcExclude: ['**/node_modules/**', 'camel-integration-capability/main/**', '**/tests/plans/**'],
 
     sitemap: {
         hostname: siteUrl
