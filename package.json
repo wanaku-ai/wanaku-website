@@ -6,7 +6,7 @@
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "feed": "^5.2.1",
+    "feed": "^6.0.0",
     "vitepress": "^1.6.4",
     "vitepress-plugin-tabs": "^0.9.1"
   },
