@@ -7,11 +7,21 @@ const siteUrl = 'https://wanaku.ai'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "Wanaku",
-    description: "The first open-source MCP Router for AI workflows",
+    description: "The open-source MCP Router for AI workflows",
     ignoreDeadLinks: true,
     base: '/',
     outDir: 'dist',
-    srcExclude: ['**/node_modules/**', 'camel-integration-capability/main/**', '**/tests/plans/**'],
+    srcExclude: [
+        '**/node_modules/**',
+        'camel-integration-capability/main/**',
+        '**/tests/plans/**',
+        '**/CLAUDE.md',
+        '**/AGENTS.md',
+        '**/CONTRIBUTING.md',
+        '**/SECURITY.md',
+        'docs/version/wanaku-main/**/README.md',
+        'docs/version/wanaku-main/**/tests/**',
+    ],
 
     sitemap: {
         hostname: siteUrl
@@ -22,10 +32,10 @@ export default defineConfig({
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
         const title = isHome
-            ? 'Wanaku — The First Open-Source MCP Router'
+            ? 'Wanaku — The Open-Source MCP Router'
             : `${pageData.title} | Wanaku`
 
-        const description = pageData.description || 'The first open-source MCP Router for AI workflows'
+        const description = pageData.description || 'The open-source MCP Router for AI workflows'
 
         const canonicalUrl = `${siteUrl}/${pageData.relativePath}`
             .replace(/index\.md$/, '')

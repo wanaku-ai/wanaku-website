@@ -4,12 +4,14 @@ setup:
 	npm i vitepress-plugin-tabs -D
 
 WANAKU_ROUTER_VERSION=0.2.0
+WANAKU_BARN_VERSION=0.2.0
 WANAKU_DEMOS_VERSION=0.2.0
 WCJSDK_VERSION=0.2.2
 CAMEL_INTEGRATION_CAPABILITY_VERSION=0.2.0
 
 DEMOS_DIR=docs/demos
 VERSIONS_DIR=docs/version
+BARN_DIR=docs/barn
 WCJSDK_DIR=docs/java-sdk
 CAMEL_INTEGRATION_CAPABILITY_DIR=docs/camel-integration-capability
 
@@ -24,6 +26,18 @@ router-main:
 	@if [ ! -e $(VERSIONS_DIR)/wanaku-main ]; then \
 		git clone --branch main https://github.com/wanaku-ai/wanaku $(VERSIONS_DIR)/wanaku-main ; \
 	fi
+
+barn-current:
+	@if [ ! -e $(BARN_DIR)/wanaku-barn-current ]; then \
+		git clone --branch wanaku-$(WANAKU_BARN_VERSION) https://github.com/wanaku-ai/wanaku-barn $(BARN_DIR)/wanaku-barn-current ; \
+	fi
+
+barn-main:
+	@if [ ! -e $(BARN_DIR)/wanaku-barn-main ]; then \
+		git clone --branch main https://github.com/wanaku-ai/wanaku-barn $(BARN_DIR)/wanaku-barn-main ; \
+	fi
+
+barn: barn-current barn-main
 
 demos-current:
 	@if [ ! -e $(DEMOS_DIR)/wanaku-demos-current ]; then \
@@ -62,15 +76,16 @@ cic-main:
 camel-integration-capability: cic-current cic-main
 
 get-wanaku:
-	curl -sSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku.sh
+	curl -sSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku-praxis.sh
 
-fetch: router-current router-main demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
+fetch: router-current router-main barn demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
 
 docs: fetch
 	npm run docs:build
 
 clean:
 	@rm -rf $(VERSIONS_DIR)/wanaku-current $(VERSIONS_DIR)/wanaku-main
+	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/wanaku-barn-main
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
 	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main
 	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main

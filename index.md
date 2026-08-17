@@ -3,15 +3,15 @@ layout: home
 
 hero:
   name: "Wanaku"
-  text: "The First Open-Source MCP Router"
-  tagline: Meet Wanaku, the first open-source MCP Router that acts like a friendly, efficient receptionist for your digital office.
+  text: "The Open-Source MCP Router"
+  tagline: Meet Wanaku, the open-source MCP Router that acts like a friendly, efficient receptionist for your digital office.
   image:
     src: /images/wanaku.png
     alt: Wanaku
   actions:
     - theme: brand
       text: Get Started
-      link: /docs/demos/wanaku-demos-current/
+      link: /docs/version/wanaku-main/docs/getting-started
     - theme: alt
       text: View on GitHub
       link: https://github.com/wanaku-ai/wanaku
@@ -24,8 +24,8 @@ features:
     details: Provides straightforward enforcement of access control, auditing, and error handling.
     icon: "🔒"
   - title: Scale Without Stress
-    details: Uses Apache Camel to handle hundreds or thousands of integration endpoints.
-    icon: "🚀"
+    details: High-performance Rust-based routing engine built on the Praxis proxy framework.
+    icon: "🦀"
   - title: Open Source
     details: Developed by the community, for the community.
     icon: "🌐"

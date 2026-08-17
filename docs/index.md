@@ -4,30 +4,30 @@ layout: home
 description: "Documentation for the Wanaku MCP Router — guides, API reference, demos, and SDK docs."
 
 hero:
-  name: "Wanaku MCP Router"
+  name: "Wanaku"
   text: "Documentation"
-  tagline: Wanaku MCP Router stands between autonomous AI agents and your enterprise systems
+  tagline: Explore documentation for the Wanaku MCP Router and Wanaku Barn
   actions:
     - theme: brand
       text: Learn Wanaku
-      link: /docs/demos/
+      link: /docs/version/wanaku-current/
 
 features:
   - title: Wanaku (current version)
     details: Reference Wanaku documentation (current version)
     link: /docs/version/wanaku-current/
   - title: Wanaku Next (pre-release)
-    details: Reference Wanaku documentation (pre-release)
+    details: Pre-release documentation for the next Wanaku version (Rust-based)
     link: /docs/version/wanaku-main/
-  - title: Camel Integration Capability for Wanaku
+  - title: Wanaku Barn
+    details: Documentation for the Java/Quarkus-based Wanaku Barn MCP Router
+    link: /docs/barn/
+  - title: Camel Integration Capability
     details: Extend Wanaku capabilities by leveraging 300+ Apache Camel Components
     link: /docs/camel-integration-capability/
   - title: Wanaku Capabilities SDK
     details: Create custom Wanaku capabilities in plain Java
     link: /docs/java-sdk/
-  - title: YouTube Channel
-    details: News and videos about Wanaku
-    link: https://www.youtube.com/@WanakuAI
   - title: Community
     details: Discuss about Wanaku and MCP with the community
     link: https://github.com/orgs/wanaku-ai/discussions

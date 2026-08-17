@@ -6,6 +6,8 @@ VitePress-based documentation site for the Wanaku project.
 
 - `.vitepress/` — VitePress config and theme
 - `docs/` — documentation pages (pulled from upstream repos via Makefile)
+  - `docs/version/` — Wanaku docs, cloned from wanaku-ai/wanaku (current tag + main)
+  - `docs/barn/` — Wanaku Barn docs, cloned from wanaku-ai/wanaku-barn + landing page
 - `blog/` — blog posts
 - `about/`, `community/` — static pages
 - `public/` — static assets
@@ -27,22 +29,24 @@ The Makefile clones specific tagged versions of upstream repos into `docs/`:
 | Variable | Repository | Clone target |
 |---|---|---|
 | `WANAKU_ROUTER_VERSION` | wanaku-ai/wanaku | `docs/version/wanaku-current` |
+| `WANAKU_BARN_VERSION` | wanaku-ai/wanaku-barn | `docs/barn/wanaku-barn-current` |
 | `WANAKU_DEMOS_VERSION` | wanaku-ai/wanaku-demos | `docs/demos/wanaku-demos-current` |
 | `WCJSDK_VERSION` | wanaku-ai/wanaku-capabilities-java-sdk | `docs/java-sdk/wanaku-capabilities-java-sdk-current` |
 | `CAMEL_INTEGRATION_CAPABILITY_VERSION` | wanaku-ai/camel-integration-capability | `docs/camel-integration-capability/camel-integration-capability-current` |
 
-Each repo is cloned twice: once at the pinned tag (e.g., `wanaku-0.2.0`) and once at `main`.
+Each repo is cloned twice: once at the pinned tag and once at `main`.
 
 ## Release Process
 
-When a new Wanaku version is released, update the website as follows:
+When a new version is released, update the website as follows:
 
 1. Check the latest release/tag for each upstream repo:
-   - `gh release list --repo wanaku-ai/wanaku --limit 1`
-   - `gh release list --repo wanaku-ai/wanaku-demos --limit 1` (may not have GitHub releases; check tags with `gh api repos/wanaku-ai/wanaku-demos/git/refs/tags/wanaku-demos-<VERSION>`)
+   - `gh release list --repo wanaku-ai/wanaku --limit 1` (Rust engine)
+   - `gh release list --repo wanaku-ai/wanaku-barn --limit 1` (Java/Barn)
+   - `gh release list --repo wanaku-ai/wanaku-demos --limit 1`
    - `gh release list --repo wanaku-ai/wanaku-capabilities-java-sdk --limit 1`
    - `gh release list --repo wanaku-ai/camel-integration-capability --limit 1`
 2. Update the version variables at the top of `Makefile` to match the latest tags.
-   - Versions may differ across repos (e.g., java-sdk may be ahead of the others).
+   - Wanaku (Rust) and Barn (Java) have independent release cycles.
 3. Run `make clean && make docs` to verify the build fetches and renders correctly.
 4. Commit to a `quick-fix/update-to-<VERSION>` branch and open a PR.

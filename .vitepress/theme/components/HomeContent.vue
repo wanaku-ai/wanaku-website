@@ -11,13 +11,18 @@
       <div class="container">
         <h2>Wanaku: unlocking the power of AI</h2>
         <p>
-          Wanaku offers a CLI and UI for quick setup, exposing resources, expanding via reusable toolsets,
-          and extending through a pluggable architecture built on MCP, Apache Camel, and Quarkus.
+          Wanaku offers a high-performance MCP routing engine built on Rust and the Praxis proxy framework,
+          with a composable filter pipeline and pluggable feature system.
+          Wanaku Barn extends the ecosystem with Apache Camel integrations and a Quarkus-based platform.
         </p>
         <div class="tech-logos">
           <div class="tech-logo">
             <img src="/images/mcp.png" alt="Model Context Protocol" />
             <span>MCP</span>
+          </div>
+          <div class="tech-logo">
+            <img src="/images/rust.png" alt="Rust" />
+            <span>Rust</span>
           </div>
           <div class="tech-logo">
             <img src="/images/camel.png" alt="Apache Camel" />
