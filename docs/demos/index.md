@@ -5,7 +5,7 @@ description: "Step-by-step guided demos to learn the Wanaku MCP Router from firs
 
 hero:
   name: "Wanaku MCP Router Demos"
-  tagline: Learn Wanaku by following step-by-step guides.
+  tagline: "Learn about Wanaku through hands-on demos. Note: These demos were written for Wanaku Barn (Java). Some content may need updates for the new Rust-based Wanaku engine."
   actions:
     - theme: brand
       text: Wanaku Guided Demos (current version)
