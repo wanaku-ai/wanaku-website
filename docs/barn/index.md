@@ -30,7 +30,7 @@ features:
   - title: Demos
     details: Hands-on tutorials and guides for Wanaku Barn
     link: /docs/demos/
-  - title: Looking for the Rust engine?
-    details: The new Wanaku MCP Router is built on Rust and the Praxis proxy framework
+  - title: Looking for the new Wanaku?
+    details: Wanaku is now a governed action proxy for AI agents, built on Rust and the Praxis proxy framework
     link: /docs/version/wanaku-main/docs/
 ---

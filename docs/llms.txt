@@ -1,11 +1,11 @@
 # wanaku.ai
 
-> The Wanaku MCP Router extends AI workflows, delivers unmatched speed and reliability. Meet Wanaku, the open-source MCP Router that acts like a friendly, efficient receptionist for your digital office.
+> Wanaku is a governed action proxy for AI agents. It sits between agents and the systems they act on, intercepting tool calls, agent-to-agent messages, and inference traffic. Policy, identity, data controls, and audit happen in the proxy — agents never touch backend systems directly.
 
 Important notes:
-- The Wanaku MCP Router is a router for AI-enabled applications powered by the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
-- Wanaku is built on Rust and the Praxis proxy framework, providing a high-performance composable filter pipeline.
-- Wanaku Barn is the Java/Quarkus-based MCP Router built on [Apache Camel](https://camel.apache.org), offering mature enterprise integrations.
+- Wanaku started as an MCP Router and has expanded its scope to govern all agent actions.
+- Integration developers build Apache Camel routes and publish them as tools; agents call those tools with parameters, but Wanaku runs the actual work.
+- Wanaku Barn is the Java/Quarkus-based platform built on [Apache Camel](https://camel.apache.org), offering mature enterprise integrations.
 
 The project name comes from the origins of the word [Guanaco](https://en.wikipedia.org/wiki/Guanaco), a camelid native to
 South America.
@@ -13,7 +13,7 @@ South America.
 ## Core Content
 - [Documentation](https://wanaku.ai/docs/): Guides, API reference, demos, and SDK docs
 - [Project Organization](https://github.com/wanaku-ai/): GitHub organization with all Wanaku repositories
-- [Wanaku MCP Router](https://github.com/wanaku-ai/wanaku): Source code for the Rust-based Wanaku MCP Router
-- [Wanaku Barn](https://github.com/wanaku-ai/wanaku-barn): Source code for the Java/Quarkus-based Wanaku Barn MCP Router
+- [Wanaku](https://github.com/wanaku-ai/wanaku): Source code for Wanaku
+- [Wanaku Barn](https://github.com/wanaku-ai/wanaku-barn): Source code for the Java/Quarkus-based Wanaku Barn
 - [Wanaku Releases](https://github.com/wanaku-ai/wanaku/releases): Wanaku releases for download
 - [Project Examples](https://github.com/wanaku-ai/wanaku-examples): Example configurations and integrations

@@ -1,6 +1,6 @@
 ---
 layout: home
-description: "Join the Wanaku community — contribute, discuss, and watch demos of the open-source MCP Router."
+description: "Join the Wanaku community — contribute, discuss, and watch demos of the open-source governed action proxy for AI agents."
 
 hero:
   name: "Community"
@@ -31,8 +31,8 @@ features:
     link: mailto:contact@wanaku.ai
     linkText: Send Email
     icon: "✉️"
-  - title: Wanaku MCP Router
-    details: The main Wanaku project repository — the open-source MCP Router.
+  - title: Wanaku
+    details: The main Wanaku project repository — the open-source governed action proxy for AI agents.
     link: https://github.com/wanaku-ai/wanaku
     linkText: View Repository
     icon: "📦"

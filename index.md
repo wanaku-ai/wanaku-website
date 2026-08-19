@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "Wanaku"
-  text: "The Open-Source MCP Router"
-  tagline: Meet Wanaku, the open-source MCP Router that acts like a friendly, efficient receptionist for your digital office.
+  text: "The Open-Source Governed Action Proxy for AI Agents"
+  tagline: Wanaku sits between AI agents and the systems they act on, intercepting tool calls, agent-to-agent messages, and inference traffic. Policy, identity, data controls, and audit happen in the proxy — agents never touch backend systems directly.
   image:
     src: /images/wanaku.png
     alt: Wanaku
@@ -17,15 +17,15 @@ hero:
       link: https://github.com/wanaku-ai/wanaku
 
 features:
-  - title: Eliminate Repetitive Configurations
-    details: Automates agentic integrations spanning HTTP, Kafka, FTP, and additional protocols.
-    icon: "⚙️"
-  - title: Strengthen Security & Compliance
-    details: Provides straightforward enforcement of access control, auditing, and error handling.
+  - title: Governed by Design
+    details: Policy, identity, audit, and data controls are enforced in the proxy layer. Agents can't skip or ignore governance because they never reach the backend directly.
     icon: "🔒"
-  - title: Scale Without Stress
-    details: High-performance Rust-based routing engine built on the Praxis proxy framework.
-    icon: "🦀"
+  - title: Action Proxy, Not a Gateway
+    details: Wanaku doesn't just pass traffic through — it runs the work itself. Integration developers build Apache Camel routes and publish them as tools; agents call those tools with parameters, but Wanaku executes the actual work.
+    icon: "⚡"
+  - title: Built for AI Agents
+    details: Not a general-purpose proxy. Wanaku intercepts tool calls, agent-to-agent delegations, and inference traffic — the specific problem of agents acting on enterprise systems.
+    icon: "🤖"
   - title: Open Source
     details: Developed by the community, for the community.
     icon: "🌐"

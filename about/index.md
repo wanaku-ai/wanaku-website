@@ -1,11 +1,11 @@
 ---
 layout: home
-description: "Learn about Wanaku — the open-source MCP Router connecting AI agents to enterprise systems securely."
+description: "Learn about Wanaku — the open-source governed action proxy for AI agents."
 
 hero:
   name: "About Wanaku"
   text: ""
-  tagline: The open-source MCP Router that transforms how agentic applications integrate with enterprise systems.
+  tagline: The open-source governed action proxy that transforms how AI agents integrate with enterprise systems.
   image:
     src: /images/wanaku.png
     alt: Wanaku
@@ -19,10 +19,10 @@ hero:
 
 features:
   - title: The Challenge
-    details: While AI agents and LLMs are advancing quickly, connecting them to enterprise data remains difficult. Early agentic applications suffer from duplicated integration code and configurations, making them hard to maintain and scale. Enterprises require strict access control, auditing, and error handling — all of which are difficult given the autonomous, stochastic nature of LLMs.
+    details: AI agents are advancing quickly, but letting them act on enterprise systems is risky. Early agentic applications suffer from duplicated integration code, inconsistent access control, and no audit trail. Enterprises need governance — but the autonomous, stochastic nature of LLMs makes it hard to enforce at the agent level.
     icon: "⚡"
   - title: Our Solution
-    details: Wanaku acts like a friendly, efficient receptionist for your digital office. It greets AI agents, checks their access, and routes them to the appropriate enterprise resources. The Rust-based Wanaku engine provides a high-performance filter pipeline, while Wanaku Barn offers a mature Java/Quarkus-based platform with Apache Camel integrations.
+    details: "Wanaku is a governed action proxy that sits between agents and backends. Integration developers build Apache Camel routes and publish them as tools; agents call those tools with parameters, but Wanaku runs the actual work. Policy, identity, data controls, and audit happen in the proxy — the agent never touches backend systems directly. Originally an MCP Router, Wanaku has expanded its scope to govern all agent actions: tool calls, delegations, and inference traffic."
     icon: "🎯"
   - title: The Name
     details: "The project name comes from the origins of the word Guanaco, a camelid native to South America — a nod to our Apache Camel heritage."
