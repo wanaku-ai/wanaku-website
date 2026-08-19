@@ -2,18 +2,19 @@
   <div class="home-content">
     <section class="architecture-section">
       <div class="container">
-        <h2>The Wanaku MCP Router positions itself between autonomous AI agents and enterprise systems</h2>
+        <h2>Wanaku sits between AI agents and the systems they act on</h2>
         <img src="/images/wanaku-architecture.jpg" alt="Wanaku Architecture" class="architecture-img" />
       </div>
     </section>
 
     <section class="power-section">
       <div class="container">
-        <h2>Wanaku: unlocking the power of AI</h2>
+        <h2>A governed action proxy for AI agents</h2>
         <p>
-          Wanaku offers a high-performance MCP routing engine built on Rust and the Praxis proxy framework,
-          with a composable filter pipeline and pluggable feature system.
-          Wanaku Barn extends the ecosystem with Apache Camel integrations and a Quarkus-based platform.
+          Wanaku sits between AI agents and the systems they act on. Integration developers build
+          Apache Camel routes and publish them as tools; agents call those tools with parameters,
+          but Wanaku runs the actual work. Policy, identity, data controls, and audit happen
+          in the proxy — the agent never touches backend systems directly.
         </p>
         <div class="tech-logos">
           <div class="tech-logo">

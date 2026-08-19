@@ -7,7 +7,7 @@ const siteUrl = 'https://wanaku.ai'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "Wanaku",
-    description: "The open-source MCP Router for AI workflows",
+    description: "The open-source governed action proxy for AI agents",
     ignoreDeadLinks: true,
     base: '/',
     outDir: 'dist',
@@ -32,10 +32,10 @@ export default defineConfig({
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
         const title = isHome
-            ? 'Wanaku — The Open-Source MCP Router'
+            ? 'Wanaku — The Open-Source Governed Action Proxy for AI Agents'
             : `${pageData.title} | Wanaku`
 
-        const description = pageData.description || 'The open-source MCP Router for AI workflows'
+        const description = pageData.description || 'The open-source governed action proxy for AI agents'
 
         const canonicalUrl = `${siteUrl}/${pageData.relativePath}`
             .replace(/index\.md$/, '')

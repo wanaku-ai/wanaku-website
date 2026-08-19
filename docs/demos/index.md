@@ -1,10 +1,10 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-description: "Step-by-step guided demos to learn the Wanaku MCP Router from first tool to production deployment."
+description: "Step-by-step guided demos to learn Wanaku from first tool to production deployment."
 
 hero:
-  name: "Wanaku MCP Router Demos"
+  name: "Wanaku Demos"
   tagline: "Learn about Wanaku through hands-on demos. Note: These demos were written for Wanaku Barn (Java). Some content may need updates for the new Rust-based Wanaku engine."
   actions:
     - theme: brand

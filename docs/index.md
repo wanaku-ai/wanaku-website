@@ -1,12 +1,12 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
-description: "Documentation for the Wanaku MCP Router — guides, API reference, demos, and SDK docs."
+description: "Documentation for Wanaku — the open-source governed action proxy for AI agents."
 
 hero:
   name: "Wanaku"
   text: "Documentation"
-  tagline: Explore documentation for the Wanaku MCP Router and Wanaku Barn
+  tagline: Explore documentation for Wanaku and Wanaku Barn
   actions:
     - theme: brand
       text: Learn Wanaku
