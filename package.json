@@ -11,6 +11,6 @@
     "vitepress-plugin-tabs": "^0.9.1"
   },
   "dependencies": {
-    "mermaid": "^11.16.1"
+    "mermaid": "^12.1.0"
   }
 }
