@@ -127,6 +127,14 @@ export default defineConfig({
         config(md) {
             md.use(tabsMarkdownPlugin)
 
+            // Upstream docs are written for GitHub, where `{{...}}` in inline code is plain text.
+            // Mark inline code as v-pre so Vue does not parse it as a template expression.
+            const defaultCodeInline = md.renderer.rules.code_inline!.bind(md.renderer.rules)
+            md.renderer.rules.code_inline = (tokens, idx, options, env, self) => {
+                tokens[idx].attrSet('v-pre', '')
+                return defaultCodeInline(tokens, idx, options, env, self)
+            }
+
             const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
             md.renderer.rules.fence = (tokens, idx, options, env, self) => {
                 const token = tokens[idx]
