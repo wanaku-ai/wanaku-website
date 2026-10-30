@@ -3,28 +3,34 @@ setup:
 	npm i vitepress-plugin-mermaid mermaid -D
 	npm i vitepress-plugin-tabs -D
 
-WANAKU_ROUTER_VERSION=0.2.0
+WANAKU_CLASSIC_VERSION=0.2.0
 WANAKU_BARN_VERSION=0.2.0
 WANAKU_DEMOS_VERSION=0.2.0
 WCJSDK_VERSION=0.2.2
 CAMEL_INTEGRATION_CAPABILITY_VERSION=0.2.0
 
 DEMOS_DIR=docs/demos
-VERSIONS_DIR=docs/version
+WANAKU_CLASSIC_DIR=docs/classic
+WANAKU_NEXT_DIR=docs/next
 BARN_DIR=docs/barn
 WCJSDK_DIR=docs/java-sdk
 CAMEL_INTEGRATION_CAPABILITY_DIR=docs/camel-integration-capability
 
 .PHONY: docs demos
 
-router-current:
-	@if [ ! -e $(VERSIONS_DIR)/wanaku-current ]; then \
-		git clone --branch wanaku-$(WANAKU_ROUTER_VERSION) https://github.com/wanaku-ai/wanaku $(VERSIONS_DIR)/wanaku-current ; \
+# The wanaku targets publish only the docs/ folder of the cloned ref, so the URL path is the path under docs/
+wanaku-classic:
+	@if [ ! -e $(WANAKU_CLASSIC_DIR) ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch wanaku-$(WANAKU_CLASSIC_VERSION) https://github.com/wanaku-ai/wanaku "$$tmp" && \
+		mv "$$tmp/docs" $(WANAKU_CLASSIC_DIR) ; \
 	fi
 
-router-main:
-	@if [ ! -e $(VERSIONS_DIR)/wanaku-main ]; then \
-		git clone --branch main https://github.com/wanaku-ai/wanaku $(VERSIONS_DIR)/wanaku-main ; \
+wanaku-next:
+	@if [ ! -e $(WANAKU_NEXT_DIR) ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch main https://github.com/wanaku-ai/wanaku "$$tmp" && \
+		mv "$$tmp/docs" $(WANAKU_NEXT_DIR) ; \
 	fi
 
 barn-current:
@@ -78,13 +84,13 @@ camel-integration-capability: cic-current cic-main
 get-wanaku:
 	curl -fsSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku.sh
 
-fetch: router-current router-main barn demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
+fetch: wanaku-classic wanaku-next barn demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
 
 docs: fetch
 	npm run docs:build
 
 clean:
-	@rm -rf $(VERSIONS_DIR)/wanaku-current $(VERSIONS_DIR)/wanaku-main
+	@rm -rf $(WANAKU_CLASSIC_DIR) $(WANAKU_NEXT_DIR) docs/version
 	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/wanaku-barn-main
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
 	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main

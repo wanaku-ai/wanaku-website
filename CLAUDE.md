@@ -6,7 +6,7 @@ VitePress-based documentation site for the Wanaku project.
 
 - `.vitepress/` — VitePress config and theme
 - `docs/` — documentation pages (pulled from upstream repos via Makefile)
-  - `docs/version/` — Wanaku docs, cloned from wanaku-ai/wanaku (current tag + main)
+  - `docs/next/`, `docs/classic/` — Wanaku docs, the `docs/` folder of wanaku-ai/wanaku (`main` + Java 0.2.x tag)
   - `docs/barn/` — Wanaku Barn docs, cloned from wanaku-ai/wanaku-barn + landing page
 - `blog/` — blog posts
 - `about/`, `community/` — static pages
@@ -28,13 +28,18 @@ The Makefile clones specific tagged versions of upstream repos into `docs/`:
 
 | Variable | Repository | Clone target |
 |---|---|---|
-| `WANAKU_ROUTER_VERSION` | wanaku-ai/wanaku | `docs/version/wanaku-current` |
+| `WANAKU_CLASSIC_VERSION` | wanaku-ai/wanaku | `docs/classic` |
 | `WANAKU_BARN_VERSION` | wanaku-ai/wanaku-barn | `docs/barn/wanaku-barn-current` |
 | `WANAKU_DEMOS_VERSION` | wanaku-ai/wanaku-demos | `docs/demos/wanaku-demos-current` |
 | `WCJSDK_VERSION` | wanaku-ai/wanaku-capabilities-java-sdk | `docs/java-sdk/wanaku-capabilities-java-sdk-current` |
 | `CAMEL_INTEGRATION_CAPABILITY_VERSION` | wanaku-ai/camel-integration-capability | `docs/camel-integration-capability/camel-integration-capability-current` |
 
 Each repo is cloned twice: once at the pinned tag and once at `main`.
+
+Wanaku is the exception: only the `docs/` folder of each ref is published, at a URL that names its state rather than
+a git ref. `main` goes to `docs/next/` (`/docs/next/`) and the Java 0.2.x tag goes to `docs/classic/` (`/docs/classic/`).
+The build turns the `docs/redirects.txt` file of the `next` tree (and of a future `latest` tree) into 301s
+(`.vitepress/genRedirects.ts`), and `public/.htaccess` redirects the old `/docs/version/` URLs.
 
 ## Release Process
 
@@ -48,5 +53,7 @@ When a new version is released, update the website as follows:
    - `gh release list --repo wanaku-ai/camel-integration-capability --limit 1`
 2. Update the version variables at the top of `Makefile` to match the latest tags.
    - Wanaku (Rust) and Barn (Java) have independent release cycles.
+   - `WANAKU_CLASSIC_VERSION` tracks the Java 0.2.x line only. Do not set it to a Rust release: the Rust docs come
+     from `main` (`/docs/next/`), so a Rust release needs no Makefile change yet.
 3. Run `make clean && make docs` to verify the build fetches and renders correctly.
 4. Commit to a `quick-fix/update-to-<VERSION>` branch and open a PR.

@@ -1,2 +1,14 @@
 ErrorDocument 404 /404.html
-RedirectMatch 301 ^/docs/version/wanaku-0\.(?:0\.[1-9]|1\.[01])(?:/(.*))?$ /docs/version/wanaku-current/$1
+
+# Old URLs of the Wanaku docs. The first matching rule wins, so rules for single pages go above the prefix rules.
+# The build adds the page moves from redirects.txt at the top of this file (see .vitepress/genRedirects.ts).
+RedirectMatch 301 ^/docs/version/?$ /docs/
+RedirectMatch 301 ^/docs/version/wanaku-main(?:/|/index\.html)?$ /docs/next/
+RedirectMatch 301 ^/docs/version/wanaku-main/docs(?:/(.*))?$ /docs/next/$1
+
+# The Java line: wanaku-current and the releases 0.0.1 to 0.1.1 all go to the classic docs
+RedirectMatch 301 ^/docs/version/wanaku-(?:current|0\.(?:0\.[1-9]|1\.[01]))(?:/docs)?(?:/|/index\.html)?$ /docs/classic/usage.html
+RedirectMatch 301 ^/docs/version/wanaku-(?:current|0\.(?:0\.[1-9]|1\.[01]))/docs/(.*)$ /docs/classic/$1
+
+# The classic tree has no index page
+RedirectMatch 301 ^/docs/classic(?:/|/index\.html)?$ /docs/classic/usage.html

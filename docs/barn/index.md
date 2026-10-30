@@ -32,5 +32,5 @@ features:
     link: /docs/demos/
   - title: Looking for the new Wanaku?
     details: Wanaku is now a governed action proxy for AI agents, built on Rust and the Praxis proxy framework
-    link: /docs/version/wanaku-main/docs/
+    link: /docs/next/
 ---
