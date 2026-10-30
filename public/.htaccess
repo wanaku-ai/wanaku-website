@@ -1,1 +1,2 @@
 ErrorDocument 404 /404.html
+RedirectMatch 301 ^/docs/version/wanaku-0\.(?:0\.[1-9]|1\.[01])(?:/(.*))?$ /docs/version/wanaku-current/$1

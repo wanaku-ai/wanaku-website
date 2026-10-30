@@ -1,6 +1,0 @@
-RewriteEngine On
-
-RewriteRule ^docs/version/wanaku-0\.0\.8/(.*) /docs/version/wanaku-current/$1 [R=301,L]
-RewriteRule ^docs/version/wanaku-0\.0\.9/(.*) /docs/version/wanaku-current/$1 [R=301,L]
-RewriteRule ^docs/version/wanaku-0\.1\.0/(.*) /docs/version/wanaku-current/$1 [R=301,L]
-RewriteRule ^docs/version/wanaku-0\.1\.1/(.*) /docs/version/wanaku-current/$1 [R=301,L]
