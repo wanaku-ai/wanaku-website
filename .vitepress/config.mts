@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs';
 import { genFeed } from './genFeed'
+import { genLlms } from './genLlms'
 import { genRedirects } from './genRedirects'
 import { nextSidebar } from './nextSidebar'
 
@@ -24,7 +25,10 @@ export default defineConfig({
     ],
 
     sitemap: {
-        hostname: siteUrl
+        hostname: siteUrl,
+        // Leave out the unreleased main trees of the other repos, which duplicate their released pages,
+        // and the source-tree files that the clones publish. docs/next is the main tree of wanaku and stays in.
+        transformItems: (items) => items.filter((item) => !/-main\/|\/src\/|\/tests\//.test(item.url)),
     },
 
     transformPageData(pageData) {
@@ -129,6 +133,7 @@ export default defineConfig({
     async buildEnd(siteConfig) {
         await genFeed(siteConfig)
         genRedirects(siteConfig)
+        genLlms(siteConfig)
     },
 
     markdown: {
