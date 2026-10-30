@@ -76,7 +76,7 @@ cic-main:
 camel-integration-capability: cic-current cic-main
 
 get-wanaku:
-	curl -sSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku-praxis.sh
+	curl -fsSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku.sh
 
 fetch: router-current router-main barn demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
 
