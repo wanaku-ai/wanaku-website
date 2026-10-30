@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs';
 import { genFeed } from './genFeed'
 import { genRedirects } from './genRedirects'
+import { nextSidebar } from './nextSidebar'
 
 const siteUrl = 'https://wanaku.ai'
 
@@ -112,9 +113,16 @@ export default defineConfig({
             { icon: 'github', link: 'https://github.com/wanaku-ai/' },
             { icon: 'youtube', link: 'https://www.youtube.com/@WanakuAI' },
         ],
-        docFooter: {
-            prev: false,
-            next: false,
+        // The /docs/next/ sidebar comes from docs/nav.json in wanaku-ai/wanaku. Other pages keep no sidebar.
+        sidebar: nextSidebar(),
+        search: {
+            provider: 'local',
+        },
+        editLink: {
+            pattern: ({ filePath }) => filePath.startsWith('docs/next/')
+                ? `https://github.com/wanaku-ai/wanaku/edit/main/docs/${filePath.slice('docs/next/'.length)}`
+                : `https://github.com/wanaku-ai/wanaku-website/edit/main/${filePath}`,
+            text: 'Edit this page on GitHub',
         },
     },
 

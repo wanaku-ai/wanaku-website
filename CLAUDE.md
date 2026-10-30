@@ -40,6 +40,8 @@ Wanaku is the exception: only the `docs/` folder of each ref is published, at a 
 a git ref. `main` goes to `docs/next/` (`/docs/next/`) and the Java 0.2.x tag goes to `docs/classic/` (`/docs/classic/`).
 The build turns the `docs/redirects.txt` file of the `next` tree (and of a future `latest` tree) into 301s
 (`.vitepress/genRedirects.ts`), and `public/.htaccess` redirects the old `/docs/version/` URLs.
+The `/docs/next/` sidebar comes from the `docs/nav.json` file of the same tree (`.vitepress/nextSidebar.ts`). A docs
+PR in wanaku-ai/wanaku that adds a page to `nav.json` needs no website change.
 
 ## Release Process
 
