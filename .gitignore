@@ -2,8 +2,8 @@
 node_modules/
 get-wanaku.sh
 dist/
-docs/version/wanaku-current/
-docs/version/wanaku-main/
+docs/classic/
+docs/next/
 docs/demos/wanaku-demos-current/
 docs/demos/wanaku-demos-main/
 docs/java-sdk/wanaku-capabilities-java-sdk-current/

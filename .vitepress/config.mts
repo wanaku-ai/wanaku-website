@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { tabsMarkdownPlugin } from 'vitepress-plugin-tabs';
 import { genFeed } from './genFeed'
+import { genRedirects } from './genRedirects'
 
 const siteUrl = 'https://wanaku.ai'
 
@@ -19,8 +20,6 @@ export default defineConfig({
         '**/AGENTS.md',
         '**/CONTRIBUTING.md',
         '**/SECURITY.md',
-        'docs/version/wanaku-main/**/README.md',
-        'docs/version/wanaku-main/**/tests/**',
     ],
 
     sitemap: {
@@ -121,6 +120,7 @@ export default defineConfig({
 
     async buildEnd(siteConfig) {
         await genFeed(siteConfig)
+        genRedirects(siteConfig)
     },
 
     markdown: {

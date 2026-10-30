@@ -10,15 +10,15 @@ hero:
   actions:
     - theme: brand
       text: Learn Wanaku
-      link: /docs/version/wanaku-current/
+      link: /docs/classic/usage
 
 features:
   - title: Wanaku (current version)
     details: Reference Wanaku documentation (current version)
-    link: /docs/version/wanaku-current/
+    link: /docs/classic/usage
   - title: Wanaku Next (pre-release)
     details: Pre-release documentation for the next Wanaku version (Rust-based)
-    link: /docs/version/wanaku-main/
+    link: /docs/next/
   - title: Wanaku Barn
     details: Documentation for the Java/Quarkus-based Wanaku Barn MCP Router
     link: /docs/barn/
