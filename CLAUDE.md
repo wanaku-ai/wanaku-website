@@ -42,6 +42,8 @@ The build turns the `docs/redirects.txt` file of the `next` tree (and of a futur
 (`.vitepress/genRedirects.ts`), and `public/.htaccess` redirects the old `/docs/version/` URLs.
 The `/docs/next/` sidebar comes from the `docs/nav.json` file of the same tree (`.vitepress/nextSidebar.ts`). A docs
 PR in wanaku-ai/wanaku that adds a page to `nav.json` needs no website change.
+The build also appends one line for each `nav.json` page, with its frontmatter `description`, to the
+`public/llms.txt` file (`.vitepress/genLlms.ts`).
 
 ## Release Process
 
