@@ -35,9 +35,15 @@ export default defineConfig({
         const isHome = pageData.relativePath === 'index.md'
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
+        // The two Wanaku docs trees use the same page names, so their titles name the tree.
+        const site = pageData.relativePath.startsWith('docs/next/') ? 'Wanaku next'
+            : pageData.relativePath.startsWith('docs/classic/') ? 'Wanaku Classic'
+            : 'Wanaku'
+        if (site !== 'Wanaku') pageData.titleTemplate = `:title | ${site}`
+
         const title = isHome
             ? 'Wanaku — The Open-Source Governed Action Proxy for AI Agents'
-            : `${pageData.title} | Wanaku`
+            : `${pageData.title} | ${site}`
 
         const description = pageData.description || 'The open-source governed action proxy for AI agents'
 
