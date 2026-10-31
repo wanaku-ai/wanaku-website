@@ -2,7 +2,8 @@ import fs from 'node:fs'
 import path from 'node:path'
 import type { DefaultTheme } from 'vitepress'
 
-const NEXT_DIR = 'docs/next'
+// The docs trees that publish the docs/ folder of a repository, each with the nav.json file of that folder
+const TREES = ['docs/next', 'docs/barn/next']
 
 interface NavItem {
     text: string
@@ -11,22 +12,24 @@ interface NavItem {
     items?: NavItem[]
 }
 
-function toSidebar(items: NavItem[]): DefaultTheme.SidebarItem[] {
+function toSidebar(dir: string, items: NavItem[]): DefaultTheme.SidebarItem[] {
     return items.map((item) => ({
         text: item.text,
-        link: `/${NEXT_DIR}/${item.link}`,
+        link: `/${dir}/${item.link}`,
         collapsed: item.collapsed,
-        items: item.items ? toSidebar(item.items) : undefined,
+        items: item.items ? toSidebar(dir, item.items) : undefined,
     }))
 }
 
-// Builds the /docs/next/ sidebar from the nav.json file of the published docs tree.
-// Returns no sidebar when the file is absent, for example before `make fetch`.
-export function nextSidebar(): DefaultTheme.Sidebar {
-    const navFile = path.join(NEXT_DIR, 'nav.json')
-    if (!fs.existsSync(navFile)) {
-        return {}
+// Builds the sidebar of each tree from its nav.json file.
+// Leaves out a tree whose file is absent, for example before `make fetch`.
+export function nextSidebar(): DefaultTheme.SidebarMulti {
+    const sidebar: DefaultTheme.SidebarMulti = {}
+    for (const dir of TREES) {
+        const navFile = path.join(dir, 'nav.json')
+        if (!fs.existsSync(navFile)) continue
+        const nav = JSON.parse(fs.readFileSync(navFile, 'utf-8')) as { sidebar: NavItem[] }
+        sidebar[`/${dir}/`] = toSidebar(dir, nav.sidebar)
     }
-    const nav = JSON.parse(fs.readFileSync(navFile, 'utf-8')) as { sidebar: NavItem[] }
-    return { [`/${NEXT_DIR}/`]: toSidebar(nav.sidebar) }
+    return sidebar
 }

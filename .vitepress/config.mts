@@ -35,9 +35,10 @@ export default defineConfig({
         const isHome = pageData.relativePath === 'index.md'
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
-        // The two Wanaku docs trees use the same page names, so their titles name the tree.
+        // The Wanaku and Barn docs trees use the same page names, so their titles name the tree.
         const site = pageData.relativePath.startsWith('docs/next/') ? 'Wanaku next'
             : pageData.relativePath.startsWith('docs/classic/') ? 'Wanaku Classic'
+            : pageData.relativePath.startsWith('docs/barn/') ? 'Wanaku Barn'
             : 'Wanaku'
         if (site !== 'Wanaku') pageData.titleTemplate = `:title | ${site}`
 
@@ -123,7 +124,8 @@ export default defineConfig({
             { icon: 'github', link: 'https://github.com/wanaku-ai/' },
             { icon: 'youtube', link: 'https://www.youtube.com/@WanakuAI' },
         ],
-        // The /docs/next/ sidebar comes from docs/nav.json in wanaku-ai/wanaku. Other pages keep no sidebar.
+        // The /docs/next/ and /docs/barn/next/ sidebars come from docs/nav.json in wanaku-ai/wanaku and
+        // wanaku-ai/wanaku-barn. Other pages keep no sidebar.
         sidebar: nextSidebar(),
         search: {
             provider: 'local',
@@ -131,6 +133,8 @@ export default defineConfig({
         editLink: {
             pattern: ({ filePath }) => filePath.startsWith('docs/next/')
                 ? `https://github.com/wanaku-ai/wanaku/edit/main/docs/${filePath.slice('docs/next/'.length)}`
+                : filePath.startsWith('docs/barn/next/')
+                ? `https://github.com/wanaku-ai/wanaku-barn/edit/main/docs/${filePath.slice('docs/barn/next/'.length)}`
                 : `https://github.com/wanaku-ai/wanaku-website/edit/main/${filePath}`,
             text: 'Edit this page on GitHub',
         },

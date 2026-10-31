@@ -4,6 +4,8 @@ get-wanaku.sh
 dist/
 docs/classic/
 docs/next/
+docs/barn/next/
+docs/barn/wanaku-barn-current/
 docs/demos/wanaku-demos-current/
 docs/demos/wanaku-demos-main/
 docs/java-sdk/wanaku-capabilities-java-sdk-current/

@@ -38,12 +38,15 @@ barn-current:
 		git clone --branch wanaku-$(WANAKU_BARN_VERSION) https://github.com/wanaku-ai/wanaku-barn $(BARN_DIR)/wanaku-barn-current ; \
 	fi
 
-barn-main:
-	@if [ ! -e $(BARN_DIR)/wanaku-barn-main ]; then \
-		git clone --branch main https://github.com/wanaku-ai/wanaku-barn $(BARN_DIR)/wanaku-barn-main ; \
+# Like wanaku-next, barn-next publishes only the docs/ folder of Barn main
+barn-next:
+	@if [ ! -e $(BARN_DIR)/next ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch main https://github.com/wanaku-ai/wanaku-barn "$$tmp" && \
+		mv "$$tmp/docs" $(BARN_DIR)/next ; \
 	fi
 
-barn: barn-current barn-main
+barn: barn-current barn-next
 
 demos-current:
 	@if [ ! -e $(DEMOS_DIR)/wanaku-demos-current ]; then \
@@ -91,7 +94,7 @@ docs: fetch
 
 clean:
 	@rm -rf $(WANAKU_CLASSIC_DIR) $(WANAKU_NEXT_DIR) docs/version
-	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/wanaku-barn-main
+	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/next
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
 	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main
 	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main

@@ -3,10 +3,12 @@ import { existsSync, readFileSync, writeFileSync } from 'fs'
 import type { SiteConfig } from 'vitepress'
 
 // The trees whose docs/redirects.txt applies, with every URL prefix that served them. Pinned versions keep the
-// paths they shipped with. Keep the old /docs/version/wanaku-main/ prefix in sync with public/.htaccess.
+// paths they shipped with. Keep the old /docs/version/wanaku-main/ and /docs/barn/wanaku-barn-main/ prefixes in sync
+// with public/.htaccess.
 const trees: Record<string, string[]> = {
   latest: ['/docs/latest/'],
   next: ['/docs/next/', '/docs/version/wanaku-main/docs/'],
+  'barn/next': ['/docs/barn/next/', '/docs/barn/wanaku-barn-main/docs/'],
 }
 
 // Turns each "old new" line into a 301 from every prefix of the tree to the final page, so that an old URL reaches it
