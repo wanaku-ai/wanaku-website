@@ -50,6 +50,13 @@ redirects, sidebar and `llms.txt` lines from its own `redirects.txt` and `nav.js
 old `/docs/barn/wanaku-barn-main/` URLs. The pinned Barn tag (the Java 0.2.x line) is still cloned whole into
 `docs/barn/wanaku-barn-current`.
 
+The Capabilities Java SDK `main` works the same way, at `docs/java-sdk/next/` (`/docs/java-sdk/next/`).
+`public/.htaccess` redirects the old `/docs/java-sdk/wanaku-capabilities-java-sdk-main/` URLs.
+
+`.vitepress/docsTrees.ts` lists every tree that publishes the `docs/` folder of a repository `main` (`next`,
+`barn/next`, `java-sdk/next`). The sidebar, redirects, `llms.txt`, page title suffix, and edit links read it. To add a
+tree, add an entry there, a Makefile target that copies the `docs/` folder, and `.htaccess` rules for the old URLs.
+
 ## Release Process
 
 When a new version is released, update the website as follows:

@@ -26,7 +26,7 @@ features:
     details: Extend Wanaku capabilities by leveraging 300+ Apache Camel Components
     link: /docs/camel-integration-capability/
   - title: Wanaku Capabilities SDK
-    details: Create custom Wanaku capabilities in plain Java
+    details: The shared Java libraries of Wanaku Barn, the Camel Integration Capability, and the Wanaku Semantic Router
     link: /docs/java-sdk/
   - title: Community
     details: Discuss about Wanaku and MCP with the community
