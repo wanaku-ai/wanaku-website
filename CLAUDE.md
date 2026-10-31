@@ -53,8 +53,11 @@ old `/docs/barn/wanaku-barn-main/` URLs. The pinned Barn tag (the Java 0.2.x lin
 The Capabilities Java SDK `main` works the same way, at `docs/java-sdk/next/` (`/docs/java-sdk/next/`).
 `public/.htaccess` redirects the old `/docs/java-sdk/wanaku-capabilities-java-sdk-main/` URLs.
 
+The Semantic Router `main` works the same way, at `docs/semantic-router/next/` (`/docs/semantic-router/next/`). It has
+no release yet, so it has no pinned tree and no old URLs.
+
 `.vitepress/docsTrees.ts` lists every tree that publishes the `docs/` folder of a repository `main` (`next`,
-`barn/next`, `java-sdk/next`). The sidebar, redirects, `llms.txt`, page title suffix, and edit links read it. To add a
+`barn/next`, `java-sdk/next`, `semantic-router/next`). The sidebar, redirects, `llms.txt`, page title suffix, and edit links read it. To add a
 tree, add an entry there, a Makefile target that copies the `docs/` folder, and `.htaccess` rules for the old URLs.
 
 ## Release Process

@@ -36,6 +36,13 @@ export const docsTrees: DocsTree[] = [
         heading: 'Wanaku Capabilities Java SDK documentation',
         oldPrefixes: ['/docs/java-sdk/wanaku-capabilities-java-sdk-main/docs/'],
     },
+    {
+        dir: 'semantic-router/next',
+        repo: 'wanaku-semantic-router',
+        site: 'Wanaku Semantic Router',
+        heading: 'Wanaku Semantic Router documentation',
+        oldPrefixes: [],
+    },
 ]
 
 // Returns the tree that a page path (relative to the site root) belongs to
