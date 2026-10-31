@@ -1,36 +1,36 @@
 ---
 layout: home
-description: "Documentation for Wanaku Barn — the Java/Quarkus-based MCP Router."
+description: "Documentation for Wanaku Barn: the Wanaku CLI, the Wanaku Operator, the Keycloak tools, and the Barn backend."
 
 hero:
   name: "Wanaku Barn"
   text: "Documentation"
-  tagline: Wanaku Barn is the Java/Quarkus-based MCP Router built on Apache Camel
+  tagline: Tools to manage, deploy, and extend Wanaku
   actions:
     - theme: brand
-      text: Stable Version
-      link: /docs/barn/wanaku-barn-current/
+      text: Barn next
+      link: /docs/barn/next/
     - theme: alt
       text: View on GitHub
       link: https://github.com/wanaku-ai/wanaku-barn
 
 features:
-  - title: Wanaku Barn (stable)
-    details: Reference documentation for the current stable release
+  - title: Wanaku Barn next (pre-release)
+    details: The CLI, the operator, the Keycloak tools, and the Barn backend for the Rust-based Wanaku
+    link: /docs/barn/next/
+  - title: Wanaku Barn 0.2 (Classic)
+    details: Reference documentation for the 0.2 release, the Java/Quarkus-based MCP router
     link: /docs/barn/wanaku-barn-current/
-  - title: Wanaku Barn Next (pre-release)
-    details: Pre-release documentation for the next Barn version
-    link: /docs/barn/wanaku-barn-main/
   - title: Camel Integration Capability
-    details: Extend Wanaku Barn capabilities by leveraging 300+ Apache Camel Components
+    details: Serve Apache Camel routes and service catalogs as MCP tools
     link: /docs/camel-integration-capability/
   - title: Wanaku Capabilities SDK
-    details: Create custom Wanaku Barn capabilities in plain Java
+    details: Create custom capabilities in plain Java
     link: /docs/java-sdk/
   - title: Demos
-    details: Hands-on tutorials and guides for Wanaku Barn
+    details: Hands-on tutorials and guides
     link: /docs/demos/
-  - title: Looking for the new Wanaku?
-    details: Wanaku is now a governed action proxy for AI agents, built on Rust and the Praxis proxy framework
+  - title: Looking for Wanaku?
+    details: Wanaku is a governed action proxy for AI agents, built on Rust and the Praxis proxy framework
     link: /docs/next/
 ---

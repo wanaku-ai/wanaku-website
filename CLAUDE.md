@@ -7,7 +7,7 @@ VitePress-based documentation site for the Wanaku project.
 - `.vitepress/` — VitePress config and theme
 - `docs/` — documentation pages (pulled from upstream repos via Makefile)
   - `docs/next/`, `docs/classic/` — Wanaku docs, the `docs/` folder of wanaku-ai/wanaku (`main` + Java 0.2.x tag)
-  - `docs/barn/` — Wanaku Barn docs, cloned from wanaku-ai/wanaku-barn + landing page
+  - `docs/barn/` — Wanaku Barn docs from wanaku-ai/wanaku-barn (`next/` from `main`, `wanaku-barn-current/` from the 0.2.x tag) + landing page
 - `blog/` — blog posts
 - `about/`, `community/` — static pages
 - `public/` — static assets
@@ -44,6 +44,11 @@ The `/docs/next/` sidebar comes from the `docs/nav.json` file of the same tree (
 PR in wanaku-ai/wanaku that adds a page to `nav.json` needs no website change.
 The build also appends one line for each `nav.json` page, with its frontmatter `description`, to the
 `public/llms.txt` file (`.vitepress/genLlms.ts`).
+
+Barn `main` works the same way: only its `docs/` folder is published, at `docs/barn/next/` (`/docs/barn/next/`), with
+redirects, sidebar and `llms.txt` lines from its own `redirects.txt` and `nav.json`. `public/.htaccess` redirects the
+old `/docs/barn/wanaku-barn-main/` URLs. The pinned Barn tag (the Java 0.2.x line) is still cloned whole into
+`docs/barn/wanaku-barn-current`.
 
 ## Release Process
 
