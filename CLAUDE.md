@@ -56,8 +56,12 @@ The Capabilities Java SDK `main` works the same way, at `docs/java-sdk/next/` (`
 The Semantic Router `main` works the same way, at `docs/semantic-router/next/` (`/docs/semantic-router/next/`). It has
 no release yet, so it has no pinned tree and no old URLs.
 
+The Camel Integration Capability `main` works the same way, at `docs/camel-integration-capability/next/`
+(`/docs/camel-integration-capability/next/`). `public/.htaccess` redirects the old
+`/docs/camel-integration-capability/camel-integration-capability-main/` URLs.
+
 `.vitepress/docsTrees.ts` lists every tree that publishes the `docs/` folder of a repository `main` (`next`,
-`barn/next`, `java-sdk/next`, `semantic-router/next`). The sidebar, redirects, `llms.txt`, page title suffix, and edit links read it. To add a
+`barn/next`, `java-sdk/next`, `semantic-router/next`, `camel-integration-capability/next`). The sidebar, redirects, `llms.txt`, page title suffix, and edit links read it. To add a
 tree, add an entry there, a Makefile target that copies the `docs/` folder, and `.htaccess` rules for the old URLs.
 
 ## Release Process

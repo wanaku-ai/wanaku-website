@@ -89,12 +89,15 @@ cic-current:
 		git clone --branch camel-integration-capability-$(CAMEL_INTEGRATION_CAPABILITY_VERSION) https://github.com/wanaku-ai/camel-integration-capability $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current ; \
 	fi
 
-cic-main:
-	@if [ ! -e $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main ]; then \
-		git clone --branch main https://github.com/wanaku-ai/camel-integration-capability $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main ; \
+# Like wanaku-next, cic-next publishes only the docs/ folder of the CIC main
+cic-next:
+	@if [ ! -e $(CAMEL_INTEGRATION_CAPABILITY_DIR)/next ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch main https://github.com/wanaku-ai/camel-integration-capability "$$tmp" && \
+		mv "$$tmp/docs" $(CAMEL_INTEGRATION_CAPABILITY_DIR)/next ; \
 	fi
 
-camel-integration-capability: cic-current cic-main
+camel-integration-capability: cic-current cic-next
 
 get-wanaku:
 	curl -fsSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku.sh
@@ -110,7 +113,7 @@ clean:
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
 	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/next
 	@rm -rf $(SEMANTIC_ROUTER_DIR)/next
-	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main
+	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/next
 	@rm -rf dist
 	@rm -f get-wanaku.sh
 

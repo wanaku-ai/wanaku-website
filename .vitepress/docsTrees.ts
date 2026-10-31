@@ -43,6 +43,13 @@ export const docsTrees: DocsTree[] = [
         heading: 'Wanaku Semantic Router documentation',
         oldPrefixes: [],
     },
+    {
+        dir: 'camel-integration-capability/next',
+        repo: 'camel-integration-capability',
+        site: 'Camel Integration Capability',
+        heading: 'Camel Integration Capability documentation',
+        oldPrefixes: ['/docs/camel-integration-capability/camel-integration-capability-main/docs/'],
+    },
 ]
 
 // Returns the tree that a page path (relative to the site root) belongs to

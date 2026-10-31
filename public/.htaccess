@@ -14,6 +14,10 @@ RedirectMatch 301 ^/docs/barn/wanaku-barn-main(?:/.*)?$ /docs/barn/next/
 RedirectMatch 301 ^/docs/java-sdk/wanaku-capabilities-java-sdk-main/docs(?:/(.*))?$ /docs/java-sdk/next/$1
 RedirectMatch 301 ^/docs/java-sdk/wanaku-capabilities-java-sdk-main(?:/.*)?$ /docs/java-sdk/next/
 
+# CIC main moved to /docs/camel-integration-capability/next/, which publishes only its docs/ folder. The rest of the old clone goes to the home
+RedirectMatch 301 ^/docs/camel-integration-capability/camel-integration-capability-main/docs(?:/(.*))?$ /docs/camel-integration-capability/next/$1
+RedirectMatch 301 ^/docs/camel-integration-capability/camel-integration-capability-main(?:/.*)?$ /docs/camel-integration-capability/next/
+
 # The Java line: wanaku-current and the releases 0.0.1 to 0.1.1 all go to the classic docs
 RedirectMatch 301 ^/docs/version/wanaku-(?:current|0\.(?:0\.[1-9]|1\.[01]))(?:/docs)?(?:/|/index\.html)?$ /docs/classic/usage.html
 RedirectMatch 301 ^/docs/version/wanaku-(?:current|0\.(?:0\.[1-9]|1\.[01]))/docs/(.*)$ /docs/classic/$1
