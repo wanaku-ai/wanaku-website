@@ -65,12 +65,15 @@ wcjsdk-current:
 		git clone --branch wanaku-capabilities-java-sdk-$(WCJSDK_VERSION) https://github.com/wanaku-ai/wanaku-capabilities-java-sdk $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current ; \
 	fi
 
-wcjsdk-main:
-	@if [ ! -e $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main ]; then \
-		git clone --branch main https://github.com/wanaku-ai/wanaku-capabilities-java-sdk $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main ; \
+# Like wanaku-next, wcjsdk-next publishes only the docs/ folder of the SDK main
+wcjsdk-next:
+	@if [ ! -e $(WCJSDK_DIR)/next ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch main https://github.com/wanaku-ai/wanaku-capabilities-java-sdk "$$tmp" && \
+		mv "$$tmp/docs" $(WCJSDK_DIR)/next ; \
 	fi
 
-wanaku-capabilities-java-sdk: wcjsdk-current wcjsdk-main
+wanaku-capabilities-java-sdk: wcjsdk-current wcjsdk-next
 
 cic-current:
 	@if [ ! -e $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current ]; then \
@@ -96,7 +99,7 @@ clean:
 	@rm -rf $(WANAKU_CLASSIC_DIR) $(WANAKU_NEXT_DIR) docs/version
 	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/next
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
-	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-main
+	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/next
 	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main
 	@rm -rf dist
 	@rm -f get-wanaku.sh

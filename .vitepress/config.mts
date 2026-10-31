@@ -4,6 +4,7 @@ import { genFeed } from './genFeed'
 import { genLlms } from './genLlms'
 import { genRedirects } from './genRedirects'
 import { nextSidebar } from './nextSidebar'
+import { docsTrees, treeOf } from './docsTrees'
 
 const siteUrl = 'https://wanaku.ai'
 
@@ -35,11 +36,11 @@ export default defineConfig({
         const isHome = pageData.relativePath === 'index.md'
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
-        // The Wanaku and Barn docs trees use the same page names, so their titles name the tree.
-        const site = pageData.relativePath.startsWith('docs/next/') ? 'Wanaku next'
-            : pageData.relativePath.startsWith('docs/classic/') ? 'Wanaku Classic'
+        // The docs trees use the same page names, so their titles name the tree.
+        const site = treeOf(pageData.relativePath)?.site
+            ?? (pageData.relativePath.startsWith('docs/classic/') ? 'Wanaku Classic'
             : pageData.relativePath.startsWith('docs/barn/') ? 'Wanaku Barn'
-            : 'Wanaku'
+            : 'Wanaku')
         if (site !== 'Wanaku') pageData.titleTemplate = `:title | ${site}`
 
         const title = isHome
@@ -124,18 +125,22 @@ export default defineConfig({
             { icon: 'github', link: 'https://github.com/wanaku-ai/' },
             { icon: 'youtube', link: 'https://www.youtube.com/@WanakuAI' },
         ],
-        // The /docs/next/ and /docs/barn/next/ sidebars come from docs/nav.json in wanaku-ai/wanaku and
-        // wanaku-ai/wanaku-barn. Other pages keep no sidebar.
+        // The sidebar of each tree in docsTrees.ts comes from the docs/nav.json file of its repository.
+        // Other pages keep no sidebar.
         sidebar: nextSidebar(),
         search: {
             provider: 'local',
         },
         editLink: {
-            pattern: ({ filePath }) => filePath.startsWith('docs/next/')
-                ? `https://github.com/wanaku-ai/wanaku/edit/main/docs/${filePath.slice('docs/next/'.length)}`
-                : filePath.startsWith('docs/barn/next/')
-                ? `https://github.com/wanaku-ai/wanaku-barn/edit/main/docs/${filePath.slice('docs/barn/next/'.length)}`
-                : `https://github.com/wanaku-ai/wanaku-website/edit/main/${filePath}`,
+            // VitePress sends this function to the browser as source text, so it cannot use imports. The tree table
+            // goes into the function body as a literal.
+            pattern: new Function('{ filePath }', `
+                const trees = ${JSON.stringify(docsTrees.map(({ dir, repo }) => ({ dir, repo })))}
+                const tree = trees.find((t) => filePath.startsWith('docs/' + t.dir + '/'))
+                return tree
+                    ? 'https://github.com/wanaku-ai/' + tree.repo + '/edit/main/docs/' + filePath.slice(('docs/' + tree.dir + '/').length)
+                    : 'https://github.com/wanaku-ai/wanaku-website/edit/main/' + filePath
+            `) as (payload: { filePath: string }) => string,
             text: 'Edit this page on GitHub',
         },
     },

@@ -25,7 +25,7 @@ features:
     details: Serve Apache Camel routes and service catalogs as MCP tools
     link: /docs/camel-integration-capability/
   - title: Wanaku Capabilities SDK
-    details: Create custom capabilities in plain Java
+    details: The shared Java libraries of Wanaku Barn, the Camel Integration Capability, and the Wanaku Semantic Router
     link: /docs/java-sdk/
   - title: Demos
     details: Hands-on tutorials and guides

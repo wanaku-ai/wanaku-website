@@ -1,17 +1,12 @@
 import path from 'path'
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import type { SiteConfig } from 'vitepress'
+import { docsTrees } from './docsTrees'
 
 interface NavItem {
   text: string
   link: string
   items?: NavItem[]
-}
-
-// The docs trees that the build lists in llms.txt, each with the heading of its section
-const trees: Record<string, string> = {
-  next: 'Wanaku documentation',
-  'barn/next': 'Wanaku Barn documentation',
 }
 
 // Reads the description from the frontmatter of a page of a docs tree. A page link that ends with a slash is a section index.
@@ -26,7 +21,7 @@ function description(dir: string, link: string): string {
 // the nav.json sidebar of the tree.
 export function genLlms(config: SiteConfig) {
   const sections: string[] = []
-  for (const [tree, heading] of Object.entries(trees)) {
+  for (const { dir: tree, heading } of docsTrees) {
     const dir = path.join(config.srcDir, 'docs', tree)
     const navFile = path.join(dir, 'nav.json')
     if (!existsSync(navFile)) continue
