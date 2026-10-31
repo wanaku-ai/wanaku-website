@@ -28,6 +28,9 @@ features:
   - title: Wanaku Capabilities SDK
     details: The shared Java libraries of Wanaku Barn, the Camel Integration Capability, and the Wanaku Semantic Router
     link: /docs/java-sdk/
+  - title: Wanaku Semantic Router (pre-release)
+    details: Run Barn semantic routes as Apache Camel applications and expose them to Wanaku as governed MCP tools
+    link: /docs/semantic-router/next/
   - title: Community
     details: Discuss about Wanaku and MCP with the community
     link: https://github.com/orgs/wanaku-ai/discussions

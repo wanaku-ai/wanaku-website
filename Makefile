@@ -15,6 +15,7 @@ WANAKU_NEXT_DIR=docs/next
 BARN_DIR=docs/barn
 WCJSDK_DIR=docs/java-sdk
 CAMEL_INTEGRATION_CAPABILITY_DIR=docs/camel-integration-capability
+SEMANTIC_ROUTER_DIR=docs/semantic-router
 
 .PHONY: docs demos
 
@@ -75,6 +76,14 @@ wcjsdk-next:
 
 wanaku-capabilities-java-sdk: wcjsdk-current wcjsdk-next
 
+# The Semantic Router has no release yet, so only the docs/ folder of its main is published
+semantic-router-next:
+	@if [ ! -e $(SEMANTIC_ROUTER_DIR)/next ]; then \
+		tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \
+		git clone --depth 1 --branch main https://github.com/wanaku-ai/wanaku-semantic-router "$$tmp" && \
+		mkdir -p $(SEMANTIC_ROUTER_DIR) && mv "$$tmp/docs" $(SEMANTIC_ROUTER_DIR)/next ; \
+	fi
+
 cic-current:
 	@if [ ! -e $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current ]; then \
 		git clone --branch camel-integration-capability-$(CAMEL_INTEGRATION_CAPABILITY_VERSION) https://github.com/wanaku-ai/camel-integration-capability $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current ; \
@@ -90,7 +99,7 @@ camel-integration-capability: cic-current cic-main
 get-wanaku:
 	curl -fsSL -o get-wanaku.sh https://raw.githubusercontent.com/wanaku-ai/wanaku/refs/heads/main/get-wanaku.sh
 
-fetch: wanaku-classic wanaku-next barn demos camel-integration-capability wanaku-capabilities-java-sdk get-wanaku
+fetch: wanaku-classic wanaku-next barn demos camel-integration-capability wanaku-capabilities-java-sdk semantic-router-next get-wanaku
 
 docs: fetch
 	npm run docs:build
@@ -100,6 +109,7 @@ clean:
 	@rm -rf $(BARN_DIR)/wanaku-barn-current $(BARN_DIR)/next
 	@rm -rf $(DEMOS_DIR)/wanaku-demos-current $(DEMOS_DIR)/wanaku-demos-main
 	@rm -rf $(WCJSDK_DIR)/wanaku-capabilities-java-sdk-current $(WCJSDK_DIR)/next
+	@rm -rf $(SEMANTIC_ROUTER_DIR)/next
 	@rm -rf $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-current $(CAMEL_INTEGRATION_CAPABILITY_DIR)/camel-integration-capability-main
 	@rm -rf dist
 	@rm -f get-wanaku.sh
