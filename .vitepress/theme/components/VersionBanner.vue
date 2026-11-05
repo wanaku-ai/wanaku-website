@@ -20,7 +20,7 @@ const banner = computed(() => {
   if (path.startsWith('docs/classic/')) {
     return {
       text: 'You are reading the docs for Wanaku Classic, the deprecated Java-based Wanaku 0.2.',
-      linkText: 'Read the docs for the latest release of Wanaku, the Rust-based server.',
+      linkText: 'Read the docs for the latest release of Wanaku, the Governed Action Proxy.',
       link: withBase('/docs/latest/'),
     }
   }
