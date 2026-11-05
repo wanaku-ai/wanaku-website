@@ -27,9 +27,10 @@ export default defineConfig({
 
     sitemap: {
         hostname: siteUrl,
-        // Leave out the unreleased main trees of the other repos, which duplicate their released pages,
-        // and the source-tree files that the clones publish. docs/next is the main tree of wanaku and stays in.
-        transformItems: (items) => items.filter((item) => !/-main\/|\/src\/|\/tests\//.test(item.url)),
+        // Leave out the unreleased main trees (the next trees and the old -main clones), which duplicate the
+        // released pages of the latest trees, and the source-tree files that the clones publish.
+        transformItems: (items) =>
+            items.filter((item) => !/-main\/|\/src\/|\/tests\/|docs\/(?:[\w-]+\/)?next\//.test(item.url)),
     },
 
     transformPageData(pageData) {

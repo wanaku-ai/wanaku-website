@@ -5,10 +5,9 @@ import { docsTrees } from './docsTrees'
 
 // The trees whose docs/redirects.txt applies, with every URL prefix that served them. Pinned versions keep the
 // paths they shipped with. The old prefixes in docsTrees.ts must stay in sync with public/.htaccess.
-const trees: Record<string, string[]> = {
-  latest: ['/docs/latest/'],
-  ...Object.fromEntries(docsTrees.map((tree) => [tree.dir, [`/docs/${tree.dir}/`, ...tree.oldPrefixes]])),
-}
+const trees: Record<string, string[]> = Object.fromEntries(
+  docsTrees.map((tree) => [tree.dir, [`/docs/${tree.dir}/`, ...tree.oldPrefixes]]),
+)
 
 // Turns each "old new" line into a 301 from every prefix of the tree to the final page, so that an old URL reaches it
 // in one hop. The rules go above the prefix rules of public/.htaccess, because the first matching rule wins.

@@ -4,6 +4,11 @@ get-wanaku.sh
 dist/
 docs/classic/
 docs/next/
+docs/latest/
+docs/barn/latest/
+docs/java-sdk/latest/
+docs/semantic-router/latest/
+docs/camel-integration-capability/latest/
 docs/barn/next/
 docs/barn/wanaku-barn-current/
 docs/demos/wanaku-demos-current/

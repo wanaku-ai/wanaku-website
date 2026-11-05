@@ -8,13 +8,16 @@ hero:
   tagline: Extend Wanaku with more than 300 Apache Camel components
   actions:
     - theme: brand
-      text: Camel Integration Capability next
-      link: /docs/camel-integration-capability/next/
+      text: Camel Integration Capability latest
+      link: /docs/camel-integration-capability/latest/
     - theme: alt
       text: View on GitHub
       link: https://github.com/wanaku-ai/camel-integration-capability
 
 features:
+  - title: Camel Integration Capability (latest release)
+    details: Serve ai-tool routes as MCP tools for the Rust-based Wanaku, with service catalogs, self-registration, and the Wanaku Operator
+    link: /docs/camel-integration-capability/latest/
   - title: Camel Integration Capability next (pre-release)
     details: Serve ai-tool routes as MCP tools for the Rust-based Wanaku, with service catalogs, self-registration, and the Wanaku Operator
     link: /docs/camel-integration-capability/next/

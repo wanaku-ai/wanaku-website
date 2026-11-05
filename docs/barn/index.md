@@ -8,13 +8,16 @@ hero:
   tagline: Tools to manage, deploy, and extend Wanaku
   actions:
     - theme: brand
-      text: Barn next
-      link: /docs/barn/next/
+      text: Barn latest
+      link: /docs/barn/latest/
     - theme: alt
       text: View on GitHub
       link: https://github.com/wanaku-ai/wanaku-barn
 
 features:
+  - title: Wanaku Barn (latest release)
+    details: The CLI, the operator, the Keycloak tools, and the Barn backend for the Rust-based Wanaku
+    link: /docs/barn/latest/
   - title: Wanaku Barn next (pre-release)
     details: The CLI, the operator, the Keycloak tools, and the Barn backend for the Rust-based Wanaku
     link: /docs/barn/next/
@@ -32,5 +35,5 @@ features:
     link: /docs/demos/
   - title: Looking for Wanaku?
     details: Wanaku is a governed action proxy for AI agents, built on Rust and the Praxis proxy framework
-    link: /docs/next/
+    link: /docs/latest/
 ---
