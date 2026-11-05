@@ -8,13 +8,16 @@ hero:
   tagline: The shared Java libraries of the Wanaku components
   actions:
     - theme: brand
-      text: SDK next
-      link: /docs/java-sdk/next/
+      text: SDK latest
+      link: /docs/java-sdk/latest/
     - theme: alt
       text: View on GitHub
       link: https://github.com/wanaku-ai/wanaku-capabilities-java-sdk
 
 features:
+  - title: Wanaku Capabilities Java SDK (latest release)
+    details: API types, the services client, the Camel runtime, and the Maven downloader for the Rust-based Wanaku
+    link: /docs/java-sdk/latest/
   - title: Wanaku Capabilities Java SDK next (pre-release)
     details: API types, the services client, the Camel runtime, and the Maven downloader for the Rust-based Wanaku
     link: /docs/java-sdk/next/
