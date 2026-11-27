@@ -1,5 +1,6 @@
 ---
 layout: home
+title: "Documentation"
 description: "Documentation for Wanaku Barn: the Wanaku CLI, the Wanaku Operator, the Keycloak tools, and the Barn backend."
 
 hero:

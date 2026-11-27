@@ -1,5 +1,6 @@
 ---
 layout: home
+title: "Community"
 description: "Join the Wanaku community — contribute, discuss, and watch demos of the open-source governed action proxy for AI agents."
 
 hero:

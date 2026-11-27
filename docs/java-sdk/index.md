@@ -1,5 +1,6 @@
 ---
 layout: home
+title: "Wanaku Capabilities Java SDK documentation"
 description: "Documentation for the Wanaku Capabilities Java SDK: the shared Java libraries of Wanaku Barn, the Camel Integration Capability, and the Wanaku Semantic Router."
 
 hero:

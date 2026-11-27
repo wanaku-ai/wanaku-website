@@ -1,6 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+title: "Documentation"
 description: "Documentation for Wanaku — the open-source governed action proxy for AI agents."
 
 hero:

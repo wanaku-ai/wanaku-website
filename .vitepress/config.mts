@@ -44,15 +44,18 @@ export default defineConfig({
         const isBlogPost = pageData.relativePath.startsWith('blog/posts/')
 
         // The docs trees use the same page names, so their titles name the tree.
-        const site = treeOf(pageData.relativePath)?.site
+        const tree = treeOf(pageData.relativePath)
+        const site = tree?.site
             ?? (pageData.relativePath.startsWith('docs/classic/') ? 'Wanaku Classic'
             : pageData.relativePath.startsWith('docs/barn/') ? 'Wanaku Barn'
             : 'Wanaku')
         if (site !== 'Wanaku') pageData.titleTemplate = `:title | ${site}`
 
+        // Home-layout pages without a title use the hero name.
+        pageData.title ||= pageData.frontmatter.hero?.name ?? ''
         const title = isHome
             ? 'Wanaku — The Open-Source Governed Action Proxy for AI Agents'
-            : `${pageData.title} | ${site}`
+            : pageData.title ? `${pageData.title} | ${site}` : site
 
         const description = pageData.description || 'The open-source governed action proxy for AI agents'
 
@@ -78,6 +81,11 @@ export default defineConfig({
             ['meta', { name: 'twitter:description', content: description }],
             ['meta', { name: 'twitter:image', content: ogImage }],
         )
+
+        // The next trees are the unreleased main branches, which duplicate the pages of the latest trees.
+        if (tree?.dir.endsWith('next')) {
+            pageData.frontmatter.head.push(['meta', { name: 'robots', content: 'noindex' }])
+        }
 
         if (isHome) {
             pageData.frontmatter.head.push(
