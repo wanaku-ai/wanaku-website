@@ -8,11 +8,17 @@ import { docsTrees, treeOf } from './docsTrees'
 
 const siteUrl = 'https://wanaku.ai'
 
+// The page that markdown-it renders now. VitePress checks the links of a page right after it renders the page,
+// and it gives only the link to ignoreDeadLinks, so this tells the check which page the link is on.
+let renderedPage = ''
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     title: "Wanaku",
     description: "The open-source governed action proxy for AI agents",
-    ignoreDeadLinks: true,
+    // The latest and next trees are maintained, so their dead links fail the build. Ignore the dead links of the other
+    // pages (the classic Java docs and the legacy clones).
+    ignoreDeadLinks: [() => !treeOf(renderedPage)],
     base: '/',
     outDir: 'dist',
     srcExclude: [
@@ -155,6 +161,12 @@ export default defineConfig({
     markdown: {
         config(md) {
             md.use(tabsMarkdownPlugin)
+
+            const defaultRender = md.render.bind(md)
+            md.render = (src, env) => {
+                renderedPage = env?.relativePath ?? ''
+                return defaultRender(src, env)
+            }
 
             // Upstream docs are written for GitHub, where `{{...}}` in inline code is plain text.
             // Mark inline code as v-pre so Vue does not parse it as a template expression.
