@@ -1,5 +1,6 @@
 ---
 layout: home
+title: "Camel Integration Capability documentation"
 description: "Documentation for the Camel Integration Capability: run Apache Camel routes as MCP tools that AI agents call through Wanaku."
 
 hero:

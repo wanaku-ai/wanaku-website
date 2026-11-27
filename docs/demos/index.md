@@ -1,6 +1,7 @@
 ---
 # https://vitepress.dev/reference/default-theme-home-page
 layout: home
+title: "Demos"
 description: "Step-by-step guided demos to learn Wanaku from first tool to production deployment."
 
 hero:

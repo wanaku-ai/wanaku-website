@@ -1,5 +1,6 @@
 ---
 layout: home
+title: "About"
 description: "Learn about Wanaku — the open-source governed action proxy for AI agents."
 
 hero:
